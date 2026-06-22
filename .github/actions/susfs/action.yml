@@ -65,8 +65,7 @@ runs:
         # Apply base SUSFS patches
         cp "${{ github.workspace }}/susfs4ksu/kernel_patches/fs/"* "${{ github.workspace }}/kernel/common/fs/"
         cp "${{ github.workspace }}/susfs4ksu/kernel_patches/include/linux/"* "${{ github.workspace }}/kernel/common/include/linux/"
-        cp ${{ github.workspace }}/susfs4ksu/kernel_patches/50_add_susfs_in_gki-${{ inputs.version }}.patch ./
-
+        cp "${{ github.workspace }}/susfs4ksu/kernel_patches/50_add_susfs_in_${SUSFS_BRANCH}.patch" ./
     - name: Apply Android 12 5.10 Fake Patches
       shell: bash
       if: inputs.version == 'android12-5.10'
@@ -85,7 +84,6 @@ runs:
 
     - name: Apply Android 13 5.10 Fake Patches
       shell: bash
-      if: inputs.version == 'android13-5.10'
       working-directory: ${{ github.workspace }}/kernel/common
       run: |
         echo "Applying Android 13 5.10 SUSFS fixes"
@@ -98,7 +96,6 @@ runs:
 
     - name: Apply Android 13 5.15 Fake Patches
       shell: bash
-      if: inputs.version == 'android13-5.15'
       working-directory: ${{ github.workspace }}/kernel/common
       run: |
         echo "Applying Android 13 5.15 SUSFS fixes"
@@ -199,7 +196,7 @@ runs:
       shell: bash
       working-directory: ${{ github.workspace }}/kernel/common
       run: |
-        patch -p1 < 50_add_susfs_in_gki-${{ inputs.version }}.patch
+        patch -p1 < 50_add_susfs_in_${SUSFS_BRANCH}.patch
 
     - name: Revert Android 12 5.10 Fake Patches
       shell: bash
