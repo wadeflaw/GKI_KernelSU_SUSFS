@@ -1,0 +1,13 @@
+{
+  "version": "android16-5.10",
+  "include": [
+    {
+      "sublevel": "245",
+      "date": "lts"
+    },
+    {
+      "sublevel": "246",
+      "date": "lts"
+    }
+  ]
+}
