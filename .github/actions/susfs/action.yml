@@ -29,7 +29,7 @@ runs:
       run: |
         set -euo pipefail
 
-        SUSFS_BRANCH="gki-${{ inputs.version }}"
+        SUSFS_BRANCH="gki-android13-5.10"
         SUSFS_REPO="https://gitlab.com/simonpunk/susfs4ksu.git"        
 
         echo "Preparing SUSFS for branch: $SUSFS_BRANCH"
