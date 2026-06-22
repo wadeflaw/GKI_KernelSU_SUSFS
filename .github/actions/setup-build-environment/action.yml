@@ -7,6 +7,7 @@ runs:
     - shell: bash
       run: |
         set -euo pipefail
+        sudo apt-get update && sudo apt-get install -y ccache
         mkdir -p "${{ github.workspace }}/kernel"
         mkdir -p "${{ github.workspace }}/git-repo"
         curl -L https://storage.googleapis.com/git-repo-downloads/repo -o "${{ github.workspace }}/git-repo/repo"
