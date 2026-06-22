@@ -63,6 +63,8 @@ runs:
       working-directory: ${{ github.workspace }}/kernel/common
       run: |
         # Apply base SUSFS patches
+
+        SUSFS_BRANCH="gki-android13-5.10"
         cp "${{ github.workspace }}/susfs4ksu/kernel_patches/fs/"* "${{ github.workspace }}/kernel/common/fs/"
         cp "${{ github.workspace }}/susfs4ksu/kernel_patches/include/linux/"* "${{ github.workspace }}/kernel/common/include/linux/"
         cp "${{ github.workspace }}/susfs4ksu/kernel_patches/50_add_susfs_in_${SUSFS_BRANCH}.patch" ./
@@ -196,6 +198,7 @@ runs:
       shell: bash
       working-directory: ${{ github.workspace }}/kernel/common
       run: |
+        SUSFS_BRANCH="gki-android13-5.10"
         patch -p1 < 50_add_susfs_in_${SUSFS_BRANCH}.patch
 
     - name: Revert Android 12 5.10 Fake Patches
